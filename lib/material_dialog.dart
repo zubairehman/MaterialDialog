@@ -42,7 +42,8 @@ class MaterialDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return dialog.SimpleDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(borderRadius)),
       title: title ?? null,
       subTitle: subTitle ?? null,
       content: content,
