@@ -187,8 +187,8 @@ class DialogDemoState extends State<DialogDemo> {
                 context: context,
                 child: MaterialDialog(
                   title: Text('Title goes here'),
-                  subTitle: Text('Subtitle goes here'),
-                  content: Text(_alertWithTitleText),
+//                  subTitle: Text('Subtitle goes here'),
+//                  content: Text(_alertWithTitleText),
                   actions: <Widget>[
                     Wrap(
                       children: <Widget>[
@@ -250,6 +250,36 @@ class DialogDemoState extends State<DialogDemo> {
                       icon: Icons.add_circle,
                       text: 'add account',
                       color: theme.disabledColor,
+                    ),
+                    DialogDemoItem(
+                      icon: Icons.add_circle,
+                      text: 'add account',
+                      color: theme.disabledColor,
+                    ),
+                    DialogDemoItem(
+                      icon: Icons.add_circle,
+                      text: 'add account',
+                      color: theme.disabledColor,
+                    ),
+                    Dismissible(
+                      // Each Dismissible must contain a Key. Keys allow Flutter to
+                      // uniquely identify widgets.
+                      key: Key("key1"),
+                      // Provide a function that tells the app
+                      // what to do after an item has been swiped away.
+                      onDismissed: (direction) {
+                        // Remove the item from the data source.
+//                        setState(() {
+//                          items.removeAt(index);
+//                        });
+
+                        // Then show a snackbar.
+                        Scaffold.of(context).showSnackBar(
+                            SnackBar(content: Text("dismissed")));
+                      },
+                      // Show a red background as the item is swiped away.
+                      background: Container(color: Colors.red),
+                      child: ListTile(title: Text('Dismissible Item')),
                     ),
                   ],
                 ),

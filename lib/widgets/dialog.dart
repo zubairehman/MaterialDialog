@@ -7,6 +7,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:material_dialog/widgets/button_bar.dart' as buttonBar;
 
 // Examples can assume:
 // enum Department { treasury, state }
@@ -548,6 +549,8 @@ class SimpleDialog extends StatelessWidget {
     this.content,
     this.contentTextStyle,
     this.actions,
+    this.enableFullWidth = false,
+    this.enableFullHeight = false,
   })  : assert(titlePadding != null),
         assert(contentPadding != null),
         super(key: key);
@@ -646,6 +649,9 @@ class SimpleDialog extends StatelessWidget {
   /// {@macro flutter.material.dialog.shape}
   final ShapeBorder shape;
 
+  final enableFullWidth;
+  final enableFullHeight;
+
   @override
   Widget build(BuildContext context) {
     assert(debugCheckHasMaterialLocalizations(context));
@@ -677,8 +683,7 @@ class SimpleDialog extends StatelessWidget {
     if (subTitle != null) {
       body.add(Flexible(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(
-              24.0, 4.0, 24.0, 0.0),
+          padding: EdgeInsets.fromLTRB(24.0, 4.0, 24.0, 0.0),
           child: DefaultTextStyle(
             style: contentTextStyle ??
                 dialogTheme.contentTextStyle ??
@@ -694,7 +699,7 @@ class SimpleDialog extends StatelessWidget {
         child: Padding(
           padding: title == null
               ? EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 24.0)
-              : titlePadding,
+              : EdgeInsets.fromLTRB(24.0, 16.0, 24.0, 0.0),
           child: DefaultTextStyle(
             style: contentTextStyle ??
                 dialogTheme.contentTextStyle ??
@@ -704,6 +709,22 @@ class SimpleDialog extends StatelessWidget {
         ),
       ));
     }
+
+//    if (children != null) {
+//      body.add(
+//        LayoutBuilder(builder: (context, constraints) {
+//          return SingleChildScrollView(
+//            padding: contentPadding,
+//            child: ConstrainedBox(
+//              constraints: BoxConstraints(
+//                  minWidth: MediaQuery.of(context).size.width,
+//                  minHeight: MediaQuery.of(context).size.height),
+//              child: Expanded(flex: 1, child: ListBody(children: children)),
+//            ),
+//          );
+//        }),
+//      );
+//    }
 
     if (children != null) {
       body.add(Flexible(
@@ -715,7 +736,7 @@ class SimpleDialog extends StatelessWidget {
     }
 
     if (actions != null) {
-      body.add(ButtonBar(
+      body.add(buttonBar.ButtonBar(
         children: actions,
       ));
     }
@@ -723,7 +744,11 @@ class SimpleDialog extends StatelessWidget {
     Widget dialogChild = IntrinsicWidth(
       stepWidth: 56.0,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minWidth: 280.0),
+        constraints: BoxConstraints(
+            minWidth:
+                enableFullWidth ? MediaQuery.of(context).size.width : 280.0,
+            minHeight:
+                enableFullHeight ? MediaQuery.of(context).size.height : 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -738,6 +763,7 @@ class SimpleDialog extends StatelessWidget {
         label: label,
         child: dialogChild,
       );
+
     return Dialog(
       backgroundColor: backgroundColor,
       elevation: elevation,

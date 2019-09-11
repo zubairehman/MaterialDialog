@@ -9,6 +9,8 @@ class MaterialDialog extends StatelessWidget {
   final Widget content;
   final List<Widget> actions;
   final List<Widget> children;
+  final bool enableFullWidth;
+  final bool enableFullHeight;
 
   const MaterialDialog({
     Key key,
@@ -17,6 +19,8 @@ class MaterialDialog extends StatelessWidget {
     this.content,
     this.actions,
     this.children,
+    this.enableFullWidth = true,
+    this.enableFullHeight = false,
   }) : super(key: key);
 
   @override
@@ -27,7 +31,8 @@ class MaterialDialog extends StatelessWidget {
       content: content,
       actions: actions,
       children: children,
+      enableFullWidth: enableFullWidth,
+      enableFullHeight: enableFullHeight,
     );
   }
 }
-
