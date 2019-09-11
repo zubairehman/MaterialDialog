@@ -539,7 +539,7 @@ class SimpleDialog extends StatelessWidget {
     Key key,
     this.title,
     this.subTitle,
-    this.titlePadding = const EdgeInsets.fromLTRB(24.0, 24.0, 24.0, 0.0),
+    this.titlePadding = const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 16.0),
     this.children,
     this.contentPadding = const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
     this.backgroundColor,
@@ -549,8 +549,16 @@ class SimpleDialog extends StatelessWidget {
     this.content,
     this.contentTextStyle,
     this.actions,
-    this.enableFullWidth = false,
-    this.enableFullHeight = false,
+    this.enableFullWidth,
+    this.enableFullHeight,
+    this.headerColor,
+    this.backButtonColor,
+    this.closeButtonColor,
+    this.borderRadius,
+    this.onBackClick,
+    this.onCloseClick,
+    this.enableBackButton,
+    this.enableCloseButton,
   })  : assert(titlePadding != null),
         assert(contentPadding != null),
         super(key: key);
@@ -651,6 +659,14 @@ class SimpleDialog extends StatelessWidget {
 
   final enableFullWidth;
   final enableFullHeight;
+  final Color headerColor;
+  final Color backButtonColor;
+  final Color closeButtonColor;
+  final double borderRadius;
+  final VoidCallback onBackClick;
+  final VoidCallback onCloseClick;
+  final bool enableBackButton;
+  final bool enableCloseButton;
 
   @override
   Widget build(BuildContext context) {
@@ -661,13 +677,69 @@ class SimpleDialog extends StatelessWidget {
     String label = semanticLabel;
 
     if (title != null) {
-      body.add(Padding(
-        padding: titlePadding,
-        child: DefaultTextStyle(
-          style: theme.textTheme.title,
-          child: Semantics(namesRoute: true, child: title),
+      body.add(
+        Stack(
+          children: <Widget>[
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: headerColor,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(borderRadius),
+                  topLeft: Radius.circular(borderRadius),
+                ),
+              ),
+              child: Row(
+                children: <Widget>[
+                  enableBackButton
+                      ? IconButton(
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: backButtonColor,
+                          ),
+                          onPressed: onBackClick,
+                        )
+                      : SizedBox.shrink(),
+                  Expanded(
+                    child: Padding(
+                      padding: enableBackButton
+                          ? EdgeInsets.all(12.0)
+                          : EdgeInsets.symmetric(vertical: 12.0, horizontal: 24.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          DefaultTextStyle(
+                            style: theme.textTheme.title,
+                            child: Semantics(namesRoute: true, child: title),
+                          ),
+                          subTitle != null
+                              ? DefaultTextStyle(
+                                  style: contentTextStyle ??
+                                      dialogTheme.contentTextStyle ??
+                                      theme.textTheme.subhead,
+                                  child: subTitle,
+                                )
+                              : SizedBox.shrink()
+                        ],
+                      ),
+                    ),
+                  ),
+                  enableCloseButton
+                      ? IconButton(
+                          icon: Icon(
+                            Icons.clear,
+                            color: closeButtonColor,
+                          ),
+                          onPressed: onCloseClick,
+                        )
+                      : SizedBox.shrink(),
+                ],
+              ),
+            )
+          ],
         ),
-      ));
+      );
     } else {
       switch (theme.platform) {
         case TargetPlatform.iOS:
@@ -678,20 +750,6 @@ class SimpleDialog extends StatelessWidget {
           label =
               semanticLabel ?? MaterialLocalizations.of(context)?.dialogLabel;
       }
-    }
-
-    if (subTitle != null) {
-      body.add(Flexible(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(24.0, 4.0, 24.0, 0.0),
-          child: DefaultTextStyle(
-            style: contentTextStyle ??
-                dialogTheme.contentTextStyle ??
-                theme.textTheme.subhead,
-            child: subTitle,
-          ),
-        ),
-      ));
     }
 
     if (content != null) {
@@ -710,24 +768,9 @@ class SimpleDialog extends StatelessWidget {
       ));
     }
 
-//    if (children != null) {
-//      body.add(
-//        LayoutBuilder(builder: (context, constraints) {
-//          return SingleChildScrollView(
-//            padding: contentPadding,
-//            child: ConstrainedBox(
-//              constraints: BoxConstraints(
-//                  minWidth: MediaQuery.of(context).size.width,
-//                  minHeight: MediaQuery.of(context).size.height),
-//              child: Expanded(flex: 1, child: ListBody(children: children)),
-//            ),
-//          );
-//        }),
-//      );
-//    }
-
     if (children != null) {
       body.add(Flexible(
+        fit: FlexFit.loose,
         child: SingleChildScrollView(
           padding: contentPadding,
           child: ListBody(children: children),
@@ -751,6 +794,7 @@ class SimpleDialog extends StatelessWidget {
                 enableFullHeight ? MediaQuery.of(context).size.height : 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: body,
         ),

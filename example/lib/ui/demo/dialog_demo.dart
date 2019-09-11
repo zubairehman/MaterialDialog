@@ -186,14 +186,34 @@ class DialogDemoState extends State<DialogDemo> {
               showDemoDialog<String>(
                 context: context,
                 child: MaterialDialog(
-                  title: Text('Title goes here'),
-//                  subTitle: Text('Subtitle goes here'),
-//                  content: Text(_alertWithTitleText),
+                  borderRadius: 5.0,
+                  headerColor: Theme.of(context).primaryColor,
+                  enableBackButton: false,
+                  enableCloseButton: true,
+                  title: Text(
+                    'Title goes here',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  subTitle: Text(
+                    'Subtitle goes here',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  content: Text(_alertWithTitleText),
+                  onBackClick: () {
+                    print('back button clicked');
+                  },
+                  onCloseClick: () {
+                    print('close button clicked');
+                  },
                   actions: <Widget>[
                     Wrap(
                       children: <Widget>[
                         FlatButton(
-                          child: Text('CANCEL', style: TextStyle(color: Theme.of(context).primaryColor),),
+                          child: Text(
+                            'CANCEL',
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor),
+                          ),
                           onPressed: () {
                             Navigator.pop(
                                 context, DialogDemoAction.cancel.toString());
@@ -223,8 +243,8 @@ class DialogDemoState extends State<DialogDemo> {
 //                        });
 
                         // Then show a snackbar.
-                        Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text("dismissed")));
+                        Scaffold.of(context)
+                            .showSnackBar(SnackBar(content: Text("dismissed")));
                       },
                       // Show a red background as the item is swiped away.
                       background: Container(color: Colors.red),
@@ -274,8 +294,8 @@ class DialogDemoState extends State<DialogDemo> {
 //                        });
 
                         // Then show a snackbar.
-                        Scaffold.of(context).showSnackBar(
-                            SnackBar(content: Text("dismissed")));
+                        Scaffold.of(context)
+                            .showSnackBar(SnackBar(content: Text("dismissed")));
                       },
                       // Show a red background as the item is swiped away.
                       background: Container(color: Colors.red),

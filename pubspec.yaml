@@ -2,7 +2,7 @@ name: material_dialog
 description: A wrapper on top of simple dialog provided by flutter.
 version: 0.0.1
 author: Zubair Rehman <zubairehman.work@gmail.com>
-homepage:
+homepage: https://github.com/zubairehman/MaterialDialog.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
