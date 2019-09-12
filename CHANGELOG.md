@@ -15,3 +15,13 @@
 
 * added divider for actions
 
+## [0.0.4] - 12-Sep-2019.
+
+* added readme.md file
+
+## [0.0.5] - 12-Sep-2019.
+
+* updated onBackClick -> onBackButtonClicked
+* updated onCloseClick -> onCloseButtonClicked
+* added check for empty space in portrait mode
+

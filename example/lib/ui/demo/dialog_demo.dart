@@ -1,4 +1,6 @@
+import 'package:conditional/conditional.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:material_dialog/material_dialog.dart';
 
 enum DialogDemoAction {
@@ -199,11 +201,11 @@ class DialogDemoState extends State<DialogDemo> {
                     'Subtitle goes here',
                     style: TextStyle(color: Colors.white),
                   ),
-                  content: Text(_alertWithTitleText),
-                  onBackClick: () {
+                  content: null,
+                  onBackButtonClicked: () {
                     print('back button clicked');
                   },
-                  onCloseClick: () {
+                  onCloseButtonClicked: () {
                     print('close button clicked');
                   },
                   actions: <Widget>[

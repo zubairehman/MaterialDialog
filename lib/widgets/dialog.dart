@@ -4,9 +4,7 @@
 
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:material_dialog/widgets/button_bar.dart' as buttonBar;
 
 // Examples can assume:
@@ -782,7 +780,9 @@ class SimpleDialog extends StatelessWidget {
     if (actions != null) {
       body.add(Column(
         children: <Widget>[
-          Divider(height: 1.0,),
+          Divider(
+            height: 1.0,
+          ),
           buttonBar.ButtonBar(
             children: actions,
           ),
@@ -796,8 +796,10 @@ class SimpleDialog extends StatelessWidget {
         constraints: BoxConstraints(
             minWidth:
                 enableFullWidth ? MediaQuery.of(context).size.width : 280.0,
-            minHeight:
-                enableFullHeight ? MediaQuery.of(context).size.height : 0.0),
+            minHeight: enableFullHeight &&
+                    MediaQuery.of(context).orientation != Orientation.portrait
+                ? MediaQuery.of(context).size.height
+                : 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -17,8 +17,8 @@ class MaterialDialog extends StatelessWidget {
   final bool enableBackButton;
   final bool enableCloseButton;
   final double borderRadius;
-  final VoidCallback onBackClick;
-  final VoidCallback onCloseClick;
+  final VoidCallback onBackButtonClicked;
+  final VoidCallback onCloseButtonClicked;
 
   const MaterialDialog({
     Key key,
@@ -33,8 +33,8 @@ class MaterialDialog extends StatelessWidget {
     this.backButtonColor = Colors.white,
     this.closeButtonColor = Colors.white,
     this.borderRadius = 10.0,
-    this.onBackClick,
-    this.onCloseClick,
+    this.onBackButtonClicked,
+    this.onCloseButtonClicked,
     this.enableBackButton = false,
     this.enableCloseButton = true,
   }) : super(key: key);
@@ -53,8 +53,8 @@ class MaterialDialog extends StatelessWidget {
       backButtonColor: backButtonColor,
       closeButtonColor: closeButtonColor,
       borderRadius: borderRadius,
-      onBackClick: onBackClick,
-      onCloseClick: onCloseClick,
+      onBackClick: onBackButtonClicked,
+      onCloseClick: onCloseButtonClicked,
       enableBackButton: enableBackButton,
       enableCloseButton: enableCloseButton,
       enableFullWidth: enableFullWidth,

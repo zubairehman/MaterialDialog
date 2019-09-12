@@ -26,6 +26,8 @@ dependencies:
   material_dialog:
     path: ../
 
+  conditional: ^0.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
