@@ -1,6 +1,6 @@
 # material_dialog
 
-A new Flutter package.
+A wrapper on top of simple dialog provided by flutter.
 
 ## Getting Started
 
