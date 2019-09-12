@@ -10,3 +10,8 @@
 * added close button and listener
 * added border radius
 * added enable/disable back and close button
+
+## [0.0.3] - 12-Sep-2019.
+
+* added divider for actions
+
