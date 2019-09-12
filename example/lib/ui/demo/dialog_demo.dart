@@ -190,6 +190,7 @@ class DialogDemoState extends State<DialogDemo> {
                   headerColor: Theme.of(context).primaryColor,
                   enableBackButton: false,
                   enableCloseButton: true,
+                  enableFullHeight: true,
                   title: Text(
                     'Title goes here',
                     style: TextStyle(color: Colors.white),

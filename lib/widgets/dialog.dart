@@ -780,8 +780,13 @@ class SimpleDialog extends StatelessWidget {
     }
 
     if (actions != null) {
-      body.add(buttonBar.ButtonBar(
-        children: actions,
+      body.add(Column(
+        children: <Widget>[
+          Divider(height: 1.0,),
+          buttonBar.ButtonBar(
+            children: actions,
+          ),
+        ],
       ));
     }
 

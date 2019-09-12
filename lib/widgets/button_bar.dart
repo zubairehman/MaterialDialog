@@ -64,8 +64,8 @@ class ButtonBar extends StatelessWidget {
       case ButtonBarLayoutBehavior.padded:
         return Padding(
           padding: EdgeInsets.symmetric(
-            vertical: paddingUnit,
-            horizontal: paddingUnit,
+//            vertical: paddingUnit,
+//            horizontal: paddingUnit,
           ),
           child: child,
         );
