@@ -569,7 +569,7 @@ class SimpleDialog extends StatelessWidget {
   /// Typically a [Text] widget.
   final Widget title;
 
-  /// The (optional) title of the dialog is displayed below title
+  /// The (optional) subtitle of the dialog is displayed below title
   /// of the dialog.
   ///
   /// Typically a [Text] widget.
