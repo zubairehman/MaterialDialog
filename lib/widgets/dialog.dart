@@ -703,7 +703,7 @@ class SimpleDialog extends StatelessWidget {
                       padding: enableBackButton
                           ? EdgeInsets.all(12.0)
                           : EdgeInsets.symmetric(
-                              vertical: 12.0, horizontal: 24.0),
+                              vertical: 12.0, horizontal: 16.0),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,

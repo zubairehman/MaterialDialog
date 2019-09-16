@@ -25,3 +25,7 @@
 * updated onCloseClick -> onCloseButtonClicked
 * added check for empty space in portrait mode
 
+## [0.0.6] - 16-Sep-2019.
+
+* fixed title padding 
+
