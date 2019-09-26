@@ -1,4 +1,3 @@
-import 'package:conditional/conditional.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:material_dialog/material_dialog.dart';
@@ -304,7 +303,11 @@ class DialogDemoState extends State<DialogDemo> {
                       background: Container(color: Colors.red),
                       child: ListTile(title: Text('Dismissible Item')),
                     ),
-                  ],
+                    TextField(
+                      decoration: new InputDecoration(
+                          hintText: 'Username'
+                      ),
+                    ),                  ],
                 ),
               );
             },

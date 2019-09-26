@@ -12,6 +12,7 @@ class MaterialDialog extends StatelessWidget {
   final Color headerColor;
   final Color backButtonColor;
   final Color closeButtonColor;
+  final Color backgroundColor;
   final bool enableFullWidth;
   final bool enableFullHeight;
   final bool enableBackButton;
@@ -37,11 +38,13 @@ class MaterialDialog extends StatelessWidget {
     this.onCloseButtonClicked,
     this.enableBackButton = false,
     this.enableCloseButton = true,
+    this.backgroundColor = Colors.white,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return dialog.SimpleDialog(
+      backgroundColor: backgroundColor,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius)),
       title: title ?? null,
