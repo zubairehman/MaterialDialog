@@ -21,7 +21,7 @@ Add this to your package's pubspec.yaml file:
 
 ```
 dependencies:
-  material_dialog: ^0.0.8
+  material_dialog: ^0.0.x
 ```
 
 **2. Install it**
@@ -295,6 +295,7 @@ List of params
 | enableFullHeight      | bool         | false         | The (optional) value to stretch dialog to its max height.                                                                                         |
 | borderRadius          | double       | 10.0          | The (optional) border radius of a dialog. by default its 10.0.                                                                                    |
    
-   
+Thanks
+------
 If you liked my work, don’t forget to ⭐ star the repo to show your support.
                   

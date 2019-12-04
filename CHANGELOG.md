@@ -31,3 +31,6 @@
 * fixed minor UI issues
 * refactored examples
 
+## [0.0.9] - 04-Dec-2019.
+* updated readme.md file
+

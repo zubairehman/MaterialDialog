@@ -1,6 +1,6 @@
 name: material_dialog
 description: A wrapper on top of alert dialog provided by flutter.
-version: 0.0.8
+version: 0.0.9
 author: Zubair Rehman <zubairehman.work@gmail.com>
 homepage: https://github.com/zubairehman/MaterialDialog.git
 
