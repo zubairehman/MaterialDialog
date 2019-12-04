@@ -27,3 +27,7 @@
 ## [0.0.7] - 26-Sep-2019.
 * added support for background color
 
+## [0.0.8] - 04-Dec-2019.
+* fixed minor UI issues
+* refactored examples
+
