@@ -192,6 +192,7 @@ class DialogDemoState extends State<DialogDemo> {
     );
   }
 
+  // Example 4: Basic Alert Dialog With Children -------------------------------
   Widget _buildAlertDialogWithChildren(
       ThemeData theme, BuildContext context, bool isFullScreen) {
     return MaterialDialog(
