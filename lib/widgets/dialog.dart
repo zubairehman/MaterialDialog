@@ -623,7 +623,7 @@ Future<T> showDialog<T>({
   assert(child == null || builder == null);
   assert(debugCheckHasMaterialLocalizations(context));
 
-  final ThemeData theme = Theme.of(context, shadowThemeOnly: true);
+  final ThemeData theme = Theme.of(context);
   return showGeneralDialog(
     context: context,
     pageBuilder: (BuildContext buildContext, Animation<double> animation,
